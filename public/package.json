@@ -1,0 +1,10 @@
+{
+  "name": "settle",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Seattle Black Car Service & Airport Transfers clone",
+  "scripts": {
+    "build": "node build.js",
+    "start": "node -e \"const http=require('http'),fs=require('fs');http.createServer((req,res)=>{const p=req.url==='/'?'index.html':req.url.slice(1);res.end(fs.readFileSync(p))}).listen(process.env.PORT||3000)\""
+  }
+}

@@ -1,0 +1,194 @@
+body {
+	text-wrap: balance
+}
+body,
+#layout {
+	max-width: 100%;
+	padding: 0 !important;
+	margin: 0 !important;
+	overflow-x: hidden
+}
+table{
+	width: 100% !important
+}
+.row {
+	max-width: 100%
+}
+#layout,
+.row {
+	max-width: 100%
+}
+.inner_layout, 
+div#layout.layout_1, 
+div#layout.layout_2, 
+.col {
+	width: 100% !important;
+	margin: 0 !important;
+	border-radius: 0
+}
+.xtra-cover-type-rev > rs-module-wrap {
+	height: 400px
+}
+header i.hide, 
+footer .elms_row > .clr,
+.codevz_custom_header_mobile > .row:last-child,
+.codevz_custom_footer_mobile > .row:last-child {
+	display: block
+}
+
+footer .elms_row > div > div {
+	float: none;
+	display: flex;
+	text-align: center;
+	margin: 0 auto;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.inner_layout .sf-menu {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-content: center;
+	justify-content: center
+}
+.inner_layout .sf-menu .cz a {
+	margin: 0 10px 2px !important
+}
+.cz_elm[class*="image_"] {
+	display: table;
+	margin: 0 auto
+}
+
+.header_1,
+.header_2,
+.header_3,
+.header_5,
+.fixed_side,
+.header_5.onSticky,
+.cz_back_to_archive,
+.cz_back_to_archive a,
+.single .breadcrumbs_container .inactive_l,
+.codevz_custom_header_mobile > .row:first-child,
+.codevz_custom_footer_mobile > .row:first-child {
+	display: none !important
+}
+.header_4,
+.cz_before_mobile_header,
+.cz_after_mobile_header,
+.Corpse_Sticky.cz_sticky_corpse_for_header_4 {
+	display: block !important
+}
+.nav-links,
+.cz_parent_megamenu > .sub-menu {
+	margin: 0 !important;
+	transform: none !important
+}
+.nav-links {
+	margin: 0 0 2em !important
+}
+.header_onthe_cover:not(.header_onthe_cover_dt,.header_onthe_cover_all) .page_header{
+	position: static
+}
+.codevz-my-account-reviews,
+.content .codevz-section-title,
+.archive .term-description,
+.archive .xtra-archive-desc {
+	text-align: center
+}
+div.widget > h4:before, 
+div.widget > h4:after, 
+div.footer_widget > h4:before, 
+div.footer_widget > h4:after {
+	left: 50%;
+	transform: translateX(-50%)
+}
+.cz_parent_megamenu > .sub-menu > li > a > .cz_indicator {
+	display: block;
+	visibility: visible
+}
+.blog .page_content > .row,
+.single-post .page_content > .row {
+	display: flex;
+	flex-direction: column;
+}
+.blog .page_content > .row > section.col,
+.single-post .page_content > .row > section.col {
+	order: -1
+}
+footer .have_center .elms_left > div,
+footer .have_center .elms_right > div {
+	float: none;
+	display: inline-block
+}
+footer .have_center > .elms_row > .clr {
+	display: block
+}
+.cz_posts_equal > .clr {
+	display: block !important
+}
+.hidden_top_bar,
+.fixed_contact,
+.codevz-slider-placeholder span {
+	display: none !important
+}
+.codevz-featured-image-expand {
+	margin: 0 -30px !important;
+	width: calc(100% + 60px) !important
+}
+.cz_related_posts .cz_related_post > div {
+	margin-bottom: 30px
+}
+ul.next_prev {
+	margin: 0 !important
+}
+.sidebar_inner,
+.theiaStickySidebar {
+	position: static !important;
+	padding-top: 0 !important;
+	margin-top: 0 !important
+}
+.sidebar_inner {
+	margin-top: 2em !important
+}
+
+.flex_center_on_mobile .codevz-widget-content,
+.flex_center_on_mobile > .clr {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center
+}
+.flex_center_on_mobile .codevz-widget-title,
+.flex_center_on_mobile .cz_wh > p {
+	display: block !important;
+	text-align: center
+}
+.codevz-widget-has-count ul {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	width: 100%
+}
+.flex_center_on_mobile.codevz-widget-posts .codevz-widget-content > div,
+.flex_center_on_mobile.widget_products .codevz-widget-content > div,
+.flex_center_on_mobile.widget_recent_reviews .codevz-widget-content > ul {
+	width: 100%;
+	max-width: 88%
+}
+
+.codevz-slider-placeholder.cz_post_svg {
+	background-size: 72px
+}
+div.sidebar_inner div.widget > .codevz-widget-title-mobfix-shape:before,
+div.sidebar_inner div.widget > .codevz-widget-title-mobfix-shape:after,
+footer#site_footer div.footer_widget > .codevz-widget-title-mobfix-shape:before,
+footer#site_footer div.footer_widget > .codevz-widget-title-mobfix-shape:after {
+	left: 50% !important;
+	right: auto !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	transform: translateX(-50%)
+}
