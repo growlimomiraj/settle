@@ -4,6 +4,7 @@ const path = require('path');
 const rootDir = __dirname;
 const indexSrc = path.join(rootDir, 'index.html');
 const jsSrc = path.join(rootDir, 'js', 'app.js');
+const imgDir = path.join(rootDir, 'images');
 
 const targets = ['public', 'dist', 'build'];
 
@@ -26,6 +27,18 @@ targets.forEach(target => {
     }
     fs.copyFileSync(jsSrc, path.join(targetJsDir, 'app.js'));
   }
+
+  // Copy images directory
+  if (fs.existsSync(imgDir)) {
+    const targetImgDir = path.join(targetDir, 'images');
+    if (!fs.existsSync(targetImgDir)) {
+      fs.mkdirSync(targetImgDir, { recursive: true });
+    }
+    const files = fs.readdirSync(imgDir);
+    files.forEach(f => {
+      fs.copyFileSync(path.join(imgDir, f), path.join(targetImgDir, f));
+    });
+  }
 });
 
-console.log('Build complete! Generated static files in root, public/, dist/, and build/.');
+console.log('Build complete! Synced index.html, js, and images across root, public/, dist/, and build/.');
