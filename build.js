@@ -25,7 +25,7 @@ function copyDirSync(src, dest) {
 }
 
 // Top-level files to copy
-const topFiles = ['index.html', '404.html', 'package.json', 'vercel.json', 'README.md'];
+const topFiles = ['index.html', '404.html', 'package.json', 'vercel.json', 'README.md', 'logo.png', 'logo.webp'];
 
 // Top-level directories to copy
 const subDirs = [
@@ -35,7 +35,8 @@ const subDirs = [
   'rates', 'reviews', 'blog', 'blogs', 'corporate-partners',
   'gallery', 'drive-for-us', 'contract-of-carriage',
   'terms-conditions-privacy-policy', 'liability-disclaimer',
-  'privacy-policy', 'terms-and-conditions'
+  'privacy-policy', 'terms-and-conditions',
+  'pier-66', 'pier-91', 'partner-hotels'
 ];
 
 targets.forEach(target => {
