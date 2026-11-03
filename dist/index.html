@@ -1864,132 +1864,165 @@ document.addEventListener("DOMContentLoaded", function() {
 </a>
 
 <script id="candc-live-script">
-document.addEventListener('DOMContentLoaded', function() {
-  // 1. Slideshow
-  var slides = document.querySelectorAll('.candc-slide');
-  if (slides.length > 1) {
-    var cur = 0;
-    setInterval(function() {
-      var prev = cur;
-      cur = (cur + 1) % slides.length;
+(function() {
+  function initCandcHero() {
+    // 1. Slideshow
+    var slides = document.querySelectorAll('.candc-slide');
+    if (slides && slides.length > 1) {
+      var cur = 0;
+      // Initialize first slide as active
       slides.forEach(function(s, idx) {
-        if (idx === cur) s.className = 'candc-slide active';
-        else if (idx === prev) s.className = 'candc-slide prev';
-        else s.className = 'candc-slide';
-      });
-    }, 3500);
-  }
-
-  // 2. Reviews Counter Animation (0 to 378)
-  var countEl = document.getElementById('reviewsCount');
-  if (countEl) {
-    var start = performance.now();
-    var duration = 2000;
-    function tick(now) {
-      var progress = Math.min((now - start) / duration, 1);
-      countEl.textContent = Math.floor(progress * 378);
-      if (progress < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-
-  // 3. Route Preview
-  var pick = document.getElementById('q_pickup');
-  var drop = document.getElementById('q_dropoff');
-  var badge = document.getElementById('candcRouteBadge');
-  var txt = document.getElementById('candcRouteText');
-  function checkRoute() {
-    if (!pick || !drop || !badge || !txt) return;
-    if (pick.value.trim() && drop.value.trim()) {
-      txt.textContent = pick.value.trim() + ' ➔ ' + drop.value.trim();
-      badge.style.display = 'flex';
-    } else {
-      badge.style.display = 'none';
-    }
-  }
-  if (pick && drop) {
-    pick.addEventListener('input', checkRoute);
-    drop.addEventListener('input', checkRoute);
-  }
-
-  // 4. Form Submission
-  var form = document.getElementById('candcQuoteForm');
-  var resWrap = document.getElementById('candc-result-wrap');
-  var errBox = document.getElementById('candcQuoteError');
-
-  if (form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      if (errBox) errBox.style.display = 'none';
-
-      var name = document.getElementById('q_name').value.trim();
-      var phone = document.getElementById('q_phone').value.trim();
-      var email = document.getElementById('q_email').value.trim();
-      var pax = document.getElementById('q_pax').value.trim();
-      var date = document.getElementById('q_date').value.trim();
-      var service = document.getElementById('q_service').value.trim();
-      var day = document.getElementById('q_day').value;
-      var hours = document.getElementById('q_hours').value.trim();
-      var hour = document.getElementById('q_hour').value.trim();
-      var min = (document.getElementById('q_min').value || '00').trim();
-      var ampm = document.getElementById('q_ampm').value;
-      var tripType = document.getElementById('q_trip_type').value.trim();
-      var pickup = document.getElementById('q_pickup').value.trim();
-      var dropoff = document.getElementById('q_dropoff').value.trim();
-
-      if (!name || !phone || !email || !pax || !date || !service || !hours || !hour || !tripType || !pickup || !dropoff) {
-        if (errBox) {
-          errBox.textContent = 'Please fill in all required fields to generate your instant online quote.';
-          errBox.style.display = 'block';
+        if (idx === 0) {
+          s.classList.add('active');
+          s.classList.remove('prev');
+        } else {
+          s.classList.remove('active', 'prev');
         }
-        return;
-      }
-
-      var t = Math.max(1, parseInt(pax, 10) || 12);
-      var n = Math.max(2, parseInt(hours, 10) || 4);
-      var r = ['Friday', 'Saturday', 'Sunday'].indexOf(day) !== -1;
-      var a = (t > 24 ? (r ? 310 : 255) : (t > 14 ? (r ? 255 : 210) : (t > 6 ? (r ? 190 : 160) : (r ? 130 : 110)))) * n;
-      var s = Math.round(a * 0.25);
-      var l = min.padStart(2, '0');
-      var refCode = 'SES-' + Math.floor(1000 + Math.random() * 9000);
-      var timeFormatted = hour + ':' + l + ' ' + ampm;
-
-      resWrap.innerHTML = 
-        '<div style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:16px; margin-bottom:16px;">' +
-          '<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e5e7eb; padding-bottom:8px; margin-bottom:10px;">' +
-            '<span style="font-family:'Orbitron',sans-serif; font-size:12px; font-weight:700; color:#F60102; text-transform:uppercase;">Quote Reference</span>' +
-            '<span style="font-family:monospace; font-size:13px; font-weight:700; background:#e5e7eb; padding:2px 8px; border-radius:3px;">' + refCode + '</span>' +
-          '</div>' +
-          '<p style="font-family:'Poppins',sans-serif; font-size:13px; color:#374151; margin-bottom:12px; line-height:1.5;">' +
-            'Thank you, <strong style="color:#111;">' + name + '</strong>! Here is your Seattle Express Shuttle instant quote estimate for your <strong style="color:#111;">' + service + '</strong> (' + tripType + ') on <strong style="color:#111;">' + date + '</strong> (' + day + ') at <strong style="color:#111;">' + timeFormatted + '</strong>:' +
-          '</p>' +
-          '<div style="background:#fff; border:1px solid #e5e7eb; border-radius:6px; padding:12px; margin-bottom:12px; font-size:13px; line-height:1.8;">' +
-            '<div style="display:flex; justify-content:space-between;"><span style="color:#6b7280;">Passengers & Hours:</span><strong style="color:#111;">' + pax + ' Guests · ' + hours + ' Hours</strong></div>' +
-            '<div style="display:flex; justify-content:space-between;"><span style="color:#6b7280;">Route:</span><span style="color:#111; text-align:right;">' + pickup + ' → ' + dropoff + '</span></div>' +
-            '<div style="display:flex; justify-content:space-between; border-top:1px solid #e5e7eb; padding-top:6px; margin-top:6px; font-size:15px;">' +
-              '<strong style="color:#111;">Estimated All-In Charter Quote:</strong><strong style="color:#009900;">$' + a + '</strong>' +
-            '</div>' +
-            '<div style="display:flex; justify-content:space-between;"><span style="color:#6b7280;">Deposit to Confirm:</span><strong style="color:#F60102;">$' + s + '</strong></div>' +
-          '</div>' +
-          '<p style="font-size:12px; color:#6b7280; margin-bottom:14px;">We have logged your quote details for <strong style="color:#111;">' + phone + '</strong> & <strong style="color:#111;">' + email + '</strong>. For immediate confirmation, call <a href="tel:+12065046000" style="color:#F60102; font-weight:700;">+1 (206) 504-6000</a>.</p>' +
-          '<div style="display:flex; gap:10px; flex-wrap:wrap;">' +
-            '<a href="sms:+12065046000?body=' + encodeURIComponent('Hi Seattle Express Shuttle, my quote ref is ' + refCode + ' for ' + pax + ' passengers on ' + date + ' (' + hours + ' hrs).') + '" style="flex:1; text-align:center; background:#F60102; color:#fff; font-family:'Orbitron',sans-serif; font-size:13px; font-weight:700; padding:10px 16px; border-radius:4px; text-decoration:none;">Text: +1 (206) 504-6000</a>' +
-            '<button type="button" id="btn-candc-reset" style="background:#e5e7eb; color:#111; font-family:'Poppins',sans-serif; font-size:13px; font-weight:600; padding:10px 16px; border:none; border-radius:4px; cursor:pointer;">New Quote</button>' +
-          '</div>' +
-        '</div>';
-
-      form.style.display = 'none';
-      resWrap.style.display = 'block';
-
-      document.getElementById('btn-candc-reset').addEventListener('click', function() {
-        resWrap.style.display = 'none';
-        form.reset();
-        if (badge) badge.style.display = 'none';
-        form.style.display = 'block';
       });
-    });
+
+      setInterval(function() {
+        var prev = cur;
+        cur = (cur + 1) % slides.length;
+        slides.forEach(function(s, idx) {
+          if (idx === cur) {
+            // Trigger reflow to restart zoom animation
+            s.style.animation = 'none';
+            void s.offsetHeight;
+            s.style.animation = '';
+            s.classList.add('active');
+            s.classList.remove('prev');
+          } else if (idx === prev) {
+            s.classList.add('prev');
+            s.classList.remove('active');
+          } else {
+            s.classList.remove('active', 'prev');
+          }
+        });
+      }, 3500);
+    }
+
+    // 2. Reviews Counter Animation (0 to 378)
+    var countEl = document.getElementById('reviewsCount');
+    if (countEl) {
+      var start = performance.now();
+      var duration = 2000;
+      function tick(now) {
+        var progress = Math.min((now - start) / duration, 1);
+        countEl.textContent = Math.floor(progress * 378);
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    // 3. Smart Route Preview
+    var pick = document.getElementById('q_pickup');
+    var drop = document.getElementById('q_dropoff');
+    var badge = document.getElementById('candcRouteBadge');
+    var txt = document.getElementById('candcRouteText');
+    function checkRoute() {
+      if (!pick || !drop || !badge || !txt) return;
+      if (pick.value.trim() && drop.value.trim()) {
+        txt.textContent = pick.value.trim() + ' ➔ ' + drop.value.trim();
+        badge.style.display = 'flex';
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+    if (pick && drop) {
+      pick.addEventListener('input', checkRoute);
+      drop.addEventListener('input', checkRoute);
+    }
+
+    // 4. Instant Quote Form Submission
+    var form = document.getElementById('candcQuoteForm');
+    var resWrap = document.getElementById('candc-result-wrap');
+    var errBox = document.getElementById('candcQuoteError');
+
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (errBox) errBox.style.display = 'none';
+
+        var name = (document.getElementById('q_name') ? document.getElementById('q_name').value : '').trim();
+        var phone = (document.getElementById('q_phone') ? document.getElementById('q_phone').value : '').trim();
+        var email = (document.getElementById('q_email') ? document.getElementById('q_email').value : '').trim();
+        var pax = (document.getElementById('q_pax') ? document.getElementById('q_pax').value : '').trim();
+        var date = (document.getElementById('q_date') ? document.getElementById('q_date').value : '').trim();
+        var service = (document.getElementById('q_service') ? document.getElementById('q_service').value : '').trim();
+        var day = document.getElementById('q_day') ? document.getElementById('q_day').value : 'Monday';
+        var hours = (document.getElementById('q_hours') ? document.getElementById('q_hours').value : '').trim();
+        var hour = (document.getElementById('q_hour') ? document.getElementById('q_hour').value : '').trim();
+        var min = ((document.getElementById('q_min') ? document.getElementById('q_min').value : '') || '00').trim();
+        var ampm = document.getElementById('q_ampm') ? document.getElementById('q_ampm').value : 'PM';
+        var tripType = (document.getElementById('q_trip_type') ? document.getElementById('q_trip_type').value : '').trim();
+        var pickup = (document.getElementById('q_pickup') ? document.getElementById('q_pickup').value : '').trim();
+        var dropoff = (document.getElementById('q_dropoff') ? document.getElementById('q_dropoff').value : '').trim();
+
+        if (!name || !phone || !email || !pax || !date || !service || !hours || !hour || !tripType || !pickup || !dropoff) {
+          if (errBox) {
+            errBox.textContent = 'Please fill in all required fields to generate your instant online quote.';
+            errBox.style.display = 'block';
+          }
+          return;
+        }
+
+        var n = parseInt(hours, 10) || 3;
+        var t = parseInt(pax, 10) || 1;
+        var r = (service.toLowerCase().indexOf('sprinter') !== -1 || service.toLowerCase().indexOf('limo') !== -1);
+        var a = (t > 24 ? (r ? 310 : 255) : (t > 14 ? (r ? 255 : 210) : (t > 6 ? (r ? 190 : 160) : (r ? 130 : 110)))) * n;
+        var s = Math.round(a * 0.25);
+        var l = min.length < 2 ? '0' + min : min;
+        var refCode = 'SES-' + Math.floor(1000 + Math.random() * 9000);
+        var timeFormatted = hour + ':' + l + ' ' + ampm;
+
+        resWrap.innerHTML = 
+          '<div style="background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:16px; margin-bottom:16px;">' +
+            '<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e5e7eb; padding-bottom:8px; margin-bottom:10px;">' +
+              '<span style="font-family:Orbitron,sans-serif; font-size:12px; font-weight:700; color:#F60102; text-transform:uppercase;">Quote Reference</span>' +
+              '<span style="font-family:monospace; font-size:13px; font-weight:700; background:#e5e7eb; padding:2px 8px; border-radius:3px;">' + refCode + '</span>' +
+            '</div>' +
+            '<p style="font-family:Poppins,sans-serif; font-size:13px; color:#374151; margin-bottom:12px; line-height:1.5;">' +
+              'Thank you, <strong style="color:#111;">' + name + '</strong>! Here is your Seattle Express Shuttle instant quote estimate for your <strong style="color:#111;">' + service + '</strong> (' + tripType + ') on <strong style="color:#111;">' + date + '</strong> (' + day + ') at <strong style="color:#111;">' + timeFormatted + '</strong>:' +
+            '</p>' +
+            '<div style="background:#fff; border:1px solid #e5e7eb; border-radius:6px; padding:12px; margin-bottom:12px; font-size:13px; line-height:1.8;">' +
+              '<div style="display:flex; justify-content:space-between;"><span style="color:#6b7280;">Passengers & Hours:</span><strong style="color:#111;">' + pax + ' Guests · ' + hours + ' Hours</strong></div>' +
+              '<div style="display:flex; justify-content:space-between;"><span style="color:#6b7280;">Route:</span><span style="color:#111; text-align:right;">' + pickup + ' → ' + dropoff + '</span></div>' +
+              '<div style="display:flex; justify-content:space-between; border-top:1px solid #e5e7eb; padding-top:6px; margin-top:6px; font-size:15px;">' +
+                '<strong style="color:#111;">Estimated All-In Charter Quote:</strong><strong style="color:#009900;">$' + a + '</strong>' +
+              '</div>' +
+              '<div style="display:flex; justify-content:space-between;"><span style="color:#6b7280;">Deposit to Confirm:</span><strong style="color:#F60102;">$' + s + '</strong></div>' +
+            '</div>' +
+            '<p style="font-size:12px; color:#6b7280; margin-bottom:14px;">We have logged your quote details for <strong style="color:#111;">' + phone + '</strong> & <strong style="color:#111;">' + email + '</strong>. For immediate confirmation, call <a href="tel:+12065046000" style="color:#F60102; font-weight:700;">+1 (206) 504-6000</a>.</p>' +
+            '<div style="display:flex; gap:10px; flex-wrap:wrap;">' +
+              '<a href="sms:+12065046000?body=' + encodeURIComponent('Hi Seattle Express Shuttle, my quote ref is ' + refCode + ' for ' + pax + ' passengers on ' + date + ' (' + hours + ' hrs).') + '" style="flex:1; text-align:center; background:#F60102; color:#fff; font-family:Orbitron,sans-serif; font-size:13px; font-weight:700; padding:10px 16px; border-radius:4px; text-decoration:none;">Text: +1 (206) 504-6000</a>' +
+              '<button type="button" id="btn-candc-reset" style="background:#e5e7eb; color:#111; font-family:Poppins,sans-serif; font-size:13px; font-weight:600; padding:10px 16px; border:none; border-radius:4px; cursor:pointer;">New Quote</button>' +
+            '</div>' +
+          '</div>';
+
+        form.style.display = 'none';
+        resWrap.style.display = 'block';
+
+        var resetBtn = document.getElementById('btn-candc-reset');
+        if (resetBtn) {
+          resetBtn.addEventListener('click', function() {
+            resWrap.style.display = 'none';
+            form.reset();
+            if (badge) badge.style.display = 'none';
+            form.style.display = 'block';
+          });
+        }
+      });
+    }
   }
-});
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCandcHero);
+  } else {
+    initCandcHero();
+  }
+})();
 </script>
 <!-- ═══ END IDENTICAL CANDC HERO ═══ -->
 
