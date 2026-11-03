@@ -102,61 +102,140 @@ body {
     background: #f9f9f9;
     font-family: 'Montserrat', sans-serif;
 }
+/* ── SERVICES CAROUSEL (3 IN ONE LINE) ── */
+.services-carousel-wrap {
+    width: 100%;
+    background: #0a0a0a;
+    padding: 60px 0;
+    overflow: hidden;
+    position: relative;
+}
+.services-carousel-header {
+    max-width: 1200px;
+    margin: 0 auto 36px auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.services-carousel-title-box h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #b8922a;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.services-carousel-title-box h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0;
+}
+.services-nav-controls {
+    display: flex;
+    gap: 12px;
+}
+.srv-nav-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #181818;
+    border: 1px solid #333333;
+    color: #eedcb5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-size: 18px;
+}
+.srv-nav-btn:hover {
+    background: #b8922a;
+    border-color: #b8922a;
+    color: #000000;
+    transform: translateY(-2px);
+}
 .services-carousel {
     max-width: 1200px;
-    margin: 60px auto;
-    padding: 0 20px;
+    margin: 0 auto;
+    padding: 0 24px;
+    overflow: hidden;
     position: relative;
 }
 .services-track {
-    position: relative;
+    display: flex !important;
+    gap: 24px !important;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    will-change: transform;
     width: 100%;
-    min-height: 420px;
 }
 .service-card {
-    background: #111111;
-    border-radius: 18px;
-    padding: 45px;
-    width: 100%;
-    max-width: 650px;
-    margin: 0 auto;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    flex: 0 0 calc((100% - 48px) / 3) !important;
+    max-width: calc((100% - 48px) / 3) !important;
+    box-sizing: border-box !important;
+    background: #141416 !important;
+    border: 1px solid #26262a !important;
+    border-radius: 18px !important;
+    padding: 38px 30px !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    min-height: 380px !important;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+.service-card:hover {
+    transform: translateY(-8px) !important;
+    border-color: #b8922a !important;
+    box-shadow: 0 20px 45px rgba(184, 146, 42, 0.2) !important;
+}
+.service-card-top {
+    display: flex;
+    flex-direction: column;
 }
 .service-icon-box {
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     border-radius: 12px;
-    background: rgba(184, 146, 42, 0.1);
+    background: rgba(184, 146, 42, 0.12);
     border: 1px solid #b8922a;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
 }
-.service-icon-box i, 
 .service-icon-box svg {
     color: #b8922a;
-    font-size: 24px;
+    width: 26px;
+    height: 26px;
+    stroke-width: 2;
 }
 .service-num {
-    font-size: 14px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
     font-weight: 700;
     color: #b8922a;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
 }
 .service-title {
-    font-size: 32px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
     font-weight: 700;
     color: #ffffff;
-    line-height: 1.2;
-    margin-bottom: 20px;
+    line-height: 1.3;
+    margin-bottom: 14px;
 }
 .service-desc {
-    font-size: 16px;
-    color: #b3b3b3;
-    line-height: 1.6;
-    margin-bottom: 35px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #a1a1aa;
+    line-height: 1.65;
+    margin-bottom: 26px;
     font-weight: 400;
 }
 .service-link {
@@ -165,405 +244,68 @@ body {
     gap: 8px;
     color: #b8922a;
     text-decoration: none;
-    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, color 0.2s ease;
+    margin-top: auto;
 }
 .service-link:hover {
-    transform: translateX(5px);
+    color: #ffd875;
+    transform: translateX(6px);
 }
 .srv-pagination {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 16px;
-    margin-top: 35px;
-}
-.srv-dots {
-    display: flex;
-    align-items: center;
     gap: 8px;
+    margin-top: 36px;
 }
 .srv-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #eedcb5;
+    background: #3f3f46;
     cursor: pointer;
     transition: all 0.3s ease;
 }
+.srv-dot.active {
+    width: 28px;
+    border-radius: 4px;
+    background: #b8922a;
+}
 
-/* ── MOBILE (max-width: 767px) ── */
-@media (max-width: 767px) {
-    .services-carousel {
-        margin: 30px auto;
-        padding: 0 16px;
+/* ── TABLET (max-width: 991px) ── */
+@media (max-width: 991px) {
+    .service-card {
+        flex: 0 0 calc((100% - 24px) / 2) !important;
+        max-width: calc((100% - 24px) / 2) !important;
     }
-    .services-track {
-        min-height: unset;
+    .services-carousel-title-box h2 {
+        font-size: 30px;
+    }
+}
+
+/* ── MOBILE (max-width: 640px) ── */
+@media (max-width: 640px) {
+    .services-carousel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
     }
     .service-card {
-        padding: 28px 24px;
-        border-radius: 14px;
-        max-width: 100%;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        padding: 30px 22px !important;
+        min-height: auto !important;
     }
-    .service-icon-box {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 16px;
+    .services-carousel-title-box h2 {
+        font-size: 26px;
     }
-    .service-num {
-        font-size: 12px;
-        margin-bottom: 8px;
-    }
-    .service-title {
-        font-size: 22px;
-        line-height: 1.3;
-        margin-bottom: 14px;
-    }
-    .service-desc {
-        font-size: 14px;
-        line-height: 1.6;
-        margin-bottom: 24px;
-    }
-    .service-link {
-        font-size: 13px;
-    }
-    .srv-pagination {
-        margin-top: 24px;
-    }
-}/* End custom CSS */
-/* Start custom CSS for html, class: .elementor-element-f7532a1 *//* ── RESET & BASE ── */
-*{box-sizing:border-box;margin:0;padding:0}
-.bk{width:100%;font-family:'Montserrat',sans-serif}
-
-/* ── TABS ── */
-.tab-bar{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-.tab-btn{background:transparent !important;border:1.5px solid #DFC07C !important;border-radius:50px !important;padding:8px 22px !important;cursor:pointer !important;font-size:12px !important;font-weight:700 !important;letter-spacing:.6px !important;text-transform:uppercase !important;transition:all .2s !important;color:#DFC07C !important;line-height:normal !important;margin:0 !important}
-.tab-btn.active{background:#DFC07C !important;color:#000 !important}
-.tab-btn:not(.active):hover{background:rgba(223,192,124,0.15) !important}
-
-/* ── FORM BOX ── */
-.form-box{background:#fff;border:1px solid #e0e0e0;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.08);width:100%;overflow:visible;position:relative;height:auto !important;min-height:92px !important}
-
-/* ── ONE WAY / ROUND TRIP ── */
-.frow{display:grid;grid-template-columns:2fr 1px 2fr 1px 1fr 1px 1fr 1px 1fr 1px 1.1fr auto;align-items:stretch;width:100%;min-height:92px}
-.fsep{background:#ebebeb;margin:14px 0;width:1px}
-.fd{position:relative;display:flex;flex-direction:column;justify-content:center;padding:10px 12px;cursor:pointer;min-width:0;overflow:visible}
-.fd:hover{background:#fafafa;border-radius:12px}
-.fd label{font-size:10px !important;font-weight:800 !important;letter-spacing:1px !important;color:#DFC07C !important;text-transform:uppercase !important;margin-bottom:4px !important;pointer-events:none;white-space:nowrap;display:block !important}
-.fd .val{font-size:12px;font-weight:500;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;align-items:center;gap:4px}
-.fd .val i{font-size:13px;color:#bbb;flex-shrink:0}
-
-/* ── DROPDOWNS ── */
-.dropdown{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid #ddd;border-radius:12px;min-width:160px;z-index:9999;display:none;box-shadow:0 12px 32px rgba(0,0,0,.15);overflow:hidden}
-.dropdown.open{display:block}
-.dropdown-item{padding:10px 16px;font-size:13px;color:#222;font-weight:500;cursor:pointer;transition:background .15s}
-.dropdown-item:hover{background:#FDF6E8;color:#8a6010}
-
-/* ── CALENDAR ── */
-.picker-panel{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid #ddd;border-radius:14px;z-index:9999;display:none;box-shadow:0 12px 32px rgba(0,0,0,.15);padding:16px;min-width:260px}
-.picker-panel.open{display:block}
-.picker-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.picker-header button{background:none;border:none;cursor:pointer;font-size:16px;color:#555;padding:4px 8px;border-radius:6px}
-.picker-header button:hover{background:#f5f5f5}
-.picker-title{font-size:13px;font-weight:700;color:#111}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
-.cal-day-name{font-size:10px;font-weight:700;color:#bbb;text-align:center;padding:4px 0;text-transform:uppercase}
-.cal-day{font-size:12px;text-align:center;padding:7px 4px;border-radius:8px;cursor:pointer;color:#333;font-weight:500}
-.cal-day:hover{background:#FDF6E8;color:#8a6010}
-.cal-day.selected{background:#DFC07C;color:#000;font-weight:700}
-.cal-day.today{border:1.5px solid #DFC07C;color:#8a6010}
-.cal-day.empty{cursor:default}
-
-/* ── TIME PICKER ── */
-.time-picker{display:flex;align-items:center;gap:8px;justify-content:center;padding:8px 0}
-.time-col{display:flex;flex-direction:column;align-items:center;gap:4px}
-.time-col button{background:none;border:none;cursor:pointer;font-size:16px;color:#bbb;padding:2px 8px;border-radius:6px}
-.time-col button:hover{background:#f5f5f5;color:#333}
-.time-val{font-size:22px;font-weight:700;color:#111;min-width:40px;text-align:center}
-.time-sep{font-size:22px;font-weight:700;color:#333}
-.ampm-btn{background:#f5f5f5;border:none;border-radius:8px;padding:6px 12px;cursor:pointer;font-size:12px;font-weight:700;color:#555}
-.ampm-btn:hover{background:#DFC07C;color:#000}
-.picker-confirm{width:100%;margin-top:12px;background:#DFC07C;border:none;border-radius:8px;padding:9px;font-size:12px;font-weight:700;cursor:pointer;color:#000;letter-spacing:.5px}
-.picker-confirm:hover{background:#c9a85a}
-
-/* ── BUTTONS ── */
-.btn-cell{display:flex;align-items:center;padding:8px 10px;flex-shrink:0}
-.check-btn{position:relative;height:52px;padding:0 16px !important;border-radius:10px !important;cursor:pointer;background:#DFC07C !important;border:none !important;display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden;transition:background .2s;margin:0 !important}
-.check-btn:hover{background:#c9a85a !important}
-.check-btn span{font-weight:800 !important;font-size:10px !important;letter-spacing:1px !important;color:#000 !important;z-index:2;text-transform:uppercase !important;position:relative}
-.fill-bar{position:absolute;top:0;left:0;height:100%;width:0%;background:#B8962E;transition:width .6s ease;z-index:1}
-
-/* ── CALL US ── */
-.call-box{display:none;align-items:center;justify-content:center;gap:24px;padding:24px;min-height:92px}
-.call-box.active{display:flex}
-.call-label{font-size:11px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
-.call-btn{display:inline-flex !important;align-items:center;gap:8px;background:#DFC07C !important;color:#000 !important;border:none !important;border-radius:50px !important;padding:10px 22px !important;font-size:15px !important;font-weight:800 !important;cursor:pointer;text-decoration:none;white-space:nowrap;transition:background .2s}
-.call-hours{font-size:11px;color:#bbb;font-weight:600;white-space:nowrap}
-
-/* ── MULTICITY ── */
-.mc-section{display:none;flex-direction:column}
-.mc-section.active{display:flex}
-.mc-stop-row{display:grid;grid-template-columns:2fr 1px 2fr 1px 1fr 1px 1fr auto;align-items:stretch;width:100%;min-height:92px;border-bottom:1px solid #f0f0f0;overflow:visible}
-.mc-stop-row:last-of-type{border-bottom:none}
-.mc-remove-cell{display:flex;align-items:center;padding:8px 10px;min-width:38px}
-.mc-remove-btn{background:none;border:none;cursor:pointer;color:#ddd;font-size:20px;padding:4px 8px;border-radius:8px;transition:color .2s,background .2s}
-.mc-remove-btn:hover{color:#e74c3c;background:#fff5f5}
-.mc-add-row{padding:10px 14px;border-top:1px solid #f0f0f0}
-.mc-add-btn{background:transparent !important;border:none !important;cursor:pointer !important;font-size:11px !important;font-weight:700 !important;color:#DFC07C !important;text-transform:uppercase !important;letter-spacing:.6px !important;padding:6px 0 !important;display:flex;align-items:center;gap:6px;transition:opacity .2s !important}
-.mc-add-btn:hover{opacity:.7 !important}
-.mc-footer-row{display:grid;grid-template-columns:1fr auto;align-items:center;padding:10px 14px 14px;gap:12px;border-top:1px solid #f0f0f0}
-.mc-selects{display:flex;gap:16px;align-items:center}
-.mc-sel-wrap{display:flex;flex-direction:column;gap:3px}
-.mc-sel-wrap label{font-size:10px !important;font-weight:800 !important;letter-spacing:1px !important;color:#DFC07C !important;text-transform:uppercase !important;pointer-events:none}
-.mc-sel-trigger{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:500;color:#333;cursor:pointer;position:relative}
-.mc-sel-trigger i{font-size:13px;color:#bbb}
-
-/* ── HOURLY ── */
-.hourly-section{display:none;width:100%}
-.hourly-section.active{display:block}
-.hourly-stack{display:flex;flex-direction:column;padding:16px 20px;gap:0}
-.hourly-field{position:relative;border-bottom:1px solid #f0f0f0;padding:12px 4px;cursor:pointer}
-.hourly-field:last-of-type{border-bottom:none}
-.hourly-field:hover{background:#fafafa;border-radius:8px}
-.hourly-field label{font-size:10px !important;font-weight:800 !important;letter-spacing:1px !important;color:#DFC07C !important;text-transform:uppercase !important;margin-bottom:4px !important;pointer-events:none;display:block !important}
-.hourly-field .hval{font-size:13px;font-weight:500;color:#aaa;display:flex;align-items:center;justify-content:space-between}
-.hourly-field .hval.selected{color:#333}
-.hourly-field .hval i{font-size:14px;color:#bbb}
-.hourly-book-btn{width:100%;margin-top:4px;background:#DFC07C;border:none;border-radius:0 0 14px 14px;padding:15px;font-size:12px;font-weight:800;cursor:pointer;color:#000;letter-spacing:1px;text-transform:uppercase;position:relative;overflow:hidden;transition:background .2s}
-.hourly-book-btn:hover{background:#c9a85a}
-.hourly-book-btn .fill-bar{border-radius:0}
-
-/* ── PERSONAL FORM ── */
-.personal-form{display:none;margin-top:20px;background:#fff;border:1px solid #e0e0e0;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,.08);padding:28px 24px;animation:slideDown .4s ease}
-.personal-form.show{display:block}
-@keyframes slideDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
-.pf-title{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#111;margin-bottom:4px}
-.pf-subtitle{font-size:12px;color:#888;margin-bottom:20px}
-.res-summary{background:#fafafa;border:1px solid #ebebeb;border-radius:10px;padding:14px 16px;margin-bottom:20px;display:flex;flex-wrap:wrap;gap:10px 24px}
-.res-item{display:flex;flex-direction:column;gap:2px}
-.res-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#DFC07C}
-.res-value{font-size:12px;font-weight:600;color:#111}
-.pf-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px}
-.pf-field{display:flex;flex-direction:column;gap:5px}
-.pf-field label{font-size:10px !important;font-weight:700 !important;letter-spacing:.1em !important;color:#DFC07C !important;text-transform:uppercase !important}
-.pf-field input,.pf-field textarea{border:1px solid #e0e0e0;border-radius:8px;padding:10px 12px;font-size:13px;font-family:'Montserrat',sans-serif;color:#111;outline:none;transition:border-color .2s;width:100%}
-.pf-field input:focus,.pf-field textarea:focus{border-color:#DFC07C}
-.pf-actions{display:flex;align-items:center;gap:12px;margin-top:4px}
-.pf-submit{position:relative;height:48px;padding:0 28px !important;border-radius:10px !important;cursor:pointer;background:#DFC07C !important;border:none !important;font-family:'Montserrat',sans-serif !important;font-weight:800 !important;font-size:11px !important;letter-spacing:1px !important;text-transform:uppercase !important;color:#000 !important;overflow:hidden;transition:background .2s}
-.pf-submit:hover{background:#c9a85a !important}
-.pf-submit .fill-bar2{position:absolute;top:0;left:0;height:100%;width:0%;background:#B8962E;transition:width .8s ease;z-index:1}
-.pf-submit .btn-text{position:relative;z-index:2}
-.pf-note{font-size:11px;color:#aaa;line-height:1.5}
-.pf-success{display:none;text-align:center;padding:24px}
-.pf-success.show{display:block}
-.pf-success-icon{width:52px;height:52px;background:#DFC07C;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:22px}
-.pf-success h3{font-size:16px;font-weight:700;color:#111;margin-bottom:6px}
-.pf-success p{font-size:13px;color:#888}
-
-/* ── MOBILE ── */
-@media (max-width:767px){
-  .tab-bar{display:grid !important;grid-template-columns:1fr 1fr !important;gap:8px !important}
-  .tab-btn{width:100% !important;text-align:center !important;padding:10px 8px !important}
-  .frow{display:flex !important;flex-direction:column !important;min-height:unset !important}
-  .fsep{width:100% !important;height:1px !important;margin:0 !important}
-  .fd{padding:14px 16px !important;border-bottom:1px solid #ebebeb !important;width:100% !important}
-  .fd label{font-size:11px !important;margin-bottom:6px !important}
-  .fd .val{font-size:14px !important;white-space:normal !important}
-  .btn-cell{padding:14px 16px !important;width:100% !important}
-  .check-btn{width:100% !important;height:48px !important;border-radius:50px !important;font-size:13px !important}
-  .dropdown{width:100% !important;min-width:unset !important;left:0 !important;right:0 !important}
-  .picker-panel{left:0 !important;right:0 !important;min-width:unset !important;width:calc(100vw - 40px) !important}
-  .mc-stop-row{display:flex !important;flex-direction:column !important;min-height:unset !important}
-  .mc-footer-row{flex-direction:column !important;gap:12px !important}
-  .mc-footer-row .check-btn{width:100% !important}
-  .call-box{flex-direction:column !important;gap:12px !important;text-align:center !important}
-  .pf-grid{grid-template-columns:1fr !important}
-  .pf-actions{flex-direction:column !important;align-items:stretch !important}
-  .pf-submit{width:100% !important}
-  .hourly-stack{padding:8px 12px !important}
-  .hourly-field{padding:14px 8px !important}
-  .hourly-field .hval{font-size:14px !important}
-  .hourly-book-btn{font-size:14px !important;padding:16px !important}
-}/* End custom CSS */
-/* Start custom CSS for container, class: .elementor-element-e6269c1 */.tab-btn { 
-  color: #fff !important; 
-  background: transparent !important; 
-  border: 1.5px solid rgba(255,255,255,0.4) !important;
-  border-radius: 50px !important;
 }
-.tab-btn.active { 
-  background: #DFC07C !important; 
-  color: #000 !important; 
-  border: 1.5px solid #DFC07C !important;
-}
-.tab-btn { color: #000 !important; }
-.tab-btn.active { background: #DFC07C; color: #000 !important; border-color: #DFC07C; }
-
-@media (max-width: 767px) {
-  .elementor-3995 .elementor-element.elementor-element-e6269c1 {
-    width: 95% !important;
-    max-width: 95% !important;
-    overflow: hidden !important;
-    padding: 10px 15px !important;
-    box-sizing: border-box !important;
-  }
-}/* End custom CSS */
-/* Start custom CSS for html, class: .elementor-element-15ffdd7 */@media (max-width: 767px) {
-  .elementor-3995 .elementor-element.elementor-element-15ffdd7 {
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow: hidden !important;
-    white-space: normal !important;
-  }
-}/* End custom CSS */
-/* Start custom CSS for html, class: .elementor-element-fca5640 */@media (min-width: 768px) and (max-width: 1024px) {
-  .elementor-3995 .elementor-element.elementor-element-fca5640 {
-    overflow-x: auto !important;
-    flex-wrap: wrap !important;
-  }
-}/* End custom CSS */
-/* Start custom CSS for shortcode, class: .elementor-element-2dd2c3b */.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-widget {
-  background: transparent !important;
-}
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-review-item {
-  background: #1a1a1a !important;
-  border-color: #333 !important;
-}
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-review-content,
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-review-body,
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-reviewer-name,
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-review-text {
-  color: #ffffff !important;
-}
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-reviewer-location,
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-review-time {
-  color: #aaaaaa !important;
-}
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-reviewer-name {
-  color: #ffffff !important;
-}
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-review-reviewer-name {
-  color: #ffffff !important;
-}
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-name {
-  color: #ffffff !important;
-}
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b a.ti-reviewer-name {
-  color: #ffffff !important;
-}
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-widget-container,
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-widget,
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-col,
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-review-item,
-.elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-reviews-container {
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-}
-
-@media (max-width: 767px) {
-  .elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-widget .ti-reviews-container,
-  .elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-reviews-container {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 16px !important;
-    overflow: visible !important;
-  }
-  .elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-col,
-  .elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-review-item {
-    width: 100% !important;
-    min-width: unset !important;
-    max-width: 100% !important;
-    white-space: normal !important;
-    overflow: visible !important;
-    flex-shrink: unset !important;
-  }
-  .elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-review-text,
-  .elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-review-body,
-  .elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-review-content {
-    white-space: normal !important;
-    overflow: visible !important;
-    text-overflow: unset !important;
-    display: block !important;
-    font-size: 14px !important;
-    line-height: 1.6 !important;
-    max-height: unset !important;
-    -webkit-line-clamp: unset !important;
-  }
-  .elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-reviewer-name,
-  .elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-name,
-  .elementor-3995 .elementor-element.elementor-element-2dd2c3b .ti-review-time {
-    white-space: normal !important;
-    overflow: visible !important;
-    text-overflow: unset !important;
-  }
-}/* End custom CSS */
-/* Start custom CSS for container, class: .elementor-element-4e23fe2 */@media (max-width: 767px) {
-  .elementor-3995 .elementor-element.elementor-element-4e23fe2 {
-    text-align: center !important;
-    align-items: center !important;
-  }
-  .elementor-3995 .elementor-element.elementor-element-4e23fe2 p,
-  .elementor-3995 .elementor-element.elementor-element-4e23fe2 h2 {
-    text-align: center !important;
-    width: 100% !important;
-  }
-}/* End custom CSS */
-/* Start custom CSS for html, class: .elementor-element-88fa516 */.sa-section { max-width: 100%; margin: 0 auto; }
-
-.sa-heading {
-  font-size: 32px; font-weight: 700; color: #C9A84C;
-  margin-bottom: 2.5rem; line-height: 1.2;
-  font-family: 'Montserrat', sans-serif; text-align: center;
-}
-
-.sa-timeline { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-
-.sa-img-slot { padding: 0 2rem 4rem 0; display: flex; align-items: center; }
-
-.sa-text-slot {
-  padding: 0 0 4rem 2.5rem; display: flex; flex-direction: column;
-  justify-content: center; border-left: 2px solid #e8e8e8; transition: border-color 0.3s;
-}
-.sa-text-slot:hover { border-left-color: #C9A84C; }
-
-.sa-text-title {
-  font-size: 18px; font-weight: 700; color: #111;
-  margin-bottom: 0.75rem; line-height: 1.3; transition: color 0.2s;
-}
-.sa-text-slot:hover .sa-text-title { color: #C9A84C; }
-
-.sa-text-body { font-size: 13px; color: #555; line-height: 1.8; font-weight: 400; }
-.sa-text-body a { color: #C9A84C; text-decoration: underline; }
-
-.sa-cities-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 1fr; gap: 8px; width: 100%;
-}
-
-.sa-city-tag {
-  border-radius: 8px; padding: 0.75rem 1rem; border: 1px solid #ececec;
-  background: #fff; transition: border-color 0.2s, background 0.2s, transform 0.2s;
-  cursor: default; display: flex; flex-direction: column; justify-content: center;
-}
-.sa-city-tag:hover { border-color: rgba(201,168,76,0.5); background: #fffdf5; transform: translateY(-2px); }
-
-.sa-city-tag strong { display: block; font-size: 15px; font-weight: 700; color: #111; margin-bottom: 3px; transition: color 0.2s; }
-.sa-city-tag:hover strong { color: #C9A84C; }
-.sa-city-tag span { font-size: 13.75px; color: #999; line-height: 1.5; }
-
-.sa-city-tag.featured { border-color: rgba(201,168,76,0.3); background: #fffdf5; }
-.sa-city-tag.featured strong { color: #C9A84C; }
-.sa-city-tag.featured a { color: inherit; text-decoration: none; }
-.sa-city-tag.featured:hover { border-color: #C9A84C; background: #fff8e8; }
-
-.sa-sep-left { height: 1px; background: #f0f0f0; margin-bottom: 4rem; padding-right: 2rem; }
-.sa-sep-right { height: 1px; background: #f0f0f0; margin-bottom: 4rem; padding-left: 2.5rem; border-left: 2px solid #e8e8e8; }/* End custom CSS */</style>
+</style>
 <style id="debloat-elementor-icons-css">@font-face{font-family:eicons;src:url("fonts/eicons.eot");src:url("fonts/eicons.eot") format("embedded-opentype"),url("fonts/eicons.woff2") format("woff2"),url("fonts/eicons.woff") format("woff"),url("fonts/eicons.ttf") format("truetype"),url("/wp-content/plugins/elementor/assets/lib/eicons/css/../fonts/eicons.svg?5.54.0#eicon") format("svg");font-weight:400;font-style:normal}[class*=" eicon-"],[class^=eicon]{display:inline-block;font-family:eicons;font-size:inherit;font-weight:400;font-style:normal;font-variant:normal;line-height:1;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}@keyframes a{0%{transform:rotate(0deg)}to{transform:rotate(359deg)}}</style><link rel="stylesheet" id="debloat-elementor-icons-css" media="all"  href="css/elementor-icons.min.css"/>
 <style id="elementor-post-1682-css">.elementor-kit-1682{--e-global-color-primary:#000000;--e-global-color-secondary:#E5BB73;--e-global-color-text:#000000;--e-global-color-accent:#B7955B;--e-global-color-codevz_primary_color:#e5bb73;--e-global-color-codevz_secondary_color:#b7955b;--e-global-typography-991358e-font-family:"Poppins";--e-global-typography-991358e-font-size:40px;--e-global-typography-991358e-font-weight:700;--e-global-typography-991358e-text-transform:uppercase;--e-global-typography-991358e-line-height:1em;--e-global-typography-08927ac-font-family:"Poppins";--e-global-typography-08927ac-font-size:18px;--e-global-typography-08927ac-line-height:1.2em;--e-global-typography-a16e81d-font-family:"Poppins";--e-global-typography-a16e81d-font-size:22px;--e-global-typography-a16e81d-text-transform:uppercase;}.elementor-kit-1682 button,.elementor-kit-1682 input[type="button"],.elementor-kit-1682 input[type="submit"],.elementor-kit-1682 .elementor-button{background-color:#E5BB73;font-family:"Poppins", Sans-serif;font-size:18px;font-weight:800;text-transform:uppercase;line-height:1.2em;border-radius:2px 2px 2px 2px;}.elementor-kit-1682 e-page-transition{background-color:#FFBC7D;}.elementor-section.elementor-section-boxed > .elementor-container{max-width:1140px;}.e-con{--container-max-width:1140px;}.elementor-widget:not(:last-child){--kit-widget-spacing:20px;}.elementor-element{--widgets-spacing:20px 20px;--widgets-spacing-row:20px;--widgets-spacing-column:20px;}{}h1.entry-title{display:var(--page-title-display);}@media(max-width:1024px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:1024px;}.e-con{--container-max-width:1024px;}}@media(max-width:767px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:767px;}.e-con{--container-max-width:767px;}}</style>
 <style id="debloat-e-animation-fadeInUp-css">@keyframes fadeInUp{from{opacity:0;transform:translate3d(0,100%,0)}to{opacity:1;transform:none}}</style><link rel="stylesheet" id="debloat-e-animation-fadeInUp-css" media="all"  href="css/fadeInUp.min.css"/>
@@ -2145,115 +1887,237 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </script>				</div>
 				<div class="elementor-element elementor-element-d1a4b90 elementor-widget__width-initial elementor-widget elementor-widget-html" data-id="d1a4b90" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
-					<div class="services-carousel" id="services">
-    
-    <div class="services-track">
-        <div class="service-card" id="srv-0">
-            <div class="service-icon-box">
-                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path></svg>
-            </div>
-            <div class="service-num">01</div>
-            <h3 class="service-title">Airport Limo & Car Service</h3>
-            <p class="service-desc">SeaTac airport transfers with real-time flight tracking and baggage claim meet-and-greet. Flat-rate pricing for Seattle, Bellevue, Kirkland, Tacoma, and all Eastside cities.</p>
-            <a href="#services" class="service-link">View Service &rarr;</a>
+					<div class="services-carousel-wrap">
+    <div class="services-carousel-header">
+        <div class="services-carousel-title-box">
+            <h4>Exclusive Transportation</h4>
+            <h2>Our Premium Services</h2>
         </div>
-        <div class="service-card" id="srv-1" style="display: none;">
-            <div class="service-icon-box">
-                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
-            </div>
-            <div class="service-num">02</div>
-            <h3 class="service-title">Corporate Travel</h3>
-            <p class="service-desc">Reliable corporate chauffeured transportation tailored for executives. Consolidated monthly billing, pristine black sedans, and point-to-point travel across the Pacific Northwest region.</p>
-            <a href="#services" class="service-link">View Service &rarr;</a>
-        </div>
-        <div class="service-card" id="srv-2" style="display: none;">
-            <div class="service-icon-box">
-                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            </div>
-            <div class="service-num">03</div>
-            <h3 class="service-title">Hourly As-Directed</h3>
-            <p class="service-desc">Enjoy complete flexibility with our dedicated hourly charter service. Your private driver stays on standby as long as needed for meetings, shopping, or dynamic schedules.</p>
-            <a href="#services" class="service-link">View Service &rarr;</a>
-        </div>
-        <div class="service-card" id="srv-3" style="display: none;">
-            <div class="service-icon-box">
-                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4l3 3"></path></svg>
-            </div>
-            <div class="service-num">04</div>
-            <h3 class="service-title">Wedding & Events</h3>
-            <p class="service-desc">Make your special day flawless with elegant multi-passenger vehicles and executive sedans.</p>
-            <a href="#services" class="service-link">View Service &rarr;</a>
-        </div>
-        <div class="service-card" id="srv-4" style="display: none;">
-            <div class="service-icon-box">
-                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </div>
-            <div class="service-num">05</div>
-            <h3 class="service-title">Cruise Terminal Transfers</h3>
-            <p class="service-desc">Direct luxury transfers to Pier 66 and Pier 91 cruise ship terminals. Ample luggage room for families and groups traveling down to the Seattle waterfront docks.</p>
-            <a href="#services" class="service-link">View Service &rarr;</a>
-        </div>
-        <div class="service-card" id="srv-5" style="display: none;">
-            <div class="service-icon-box">
-                <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 4.477 2 12s4.477 10 10 10z"></path></svg>
-            </div>
-            <div class="service-num">06</div>
-            <h3 class="service-title">Concerts & Night Out</h3>
-            <p class="service-desc">Arrive in style at Climate Pledge Arena, Lumen Field, or T-Mobile Park. Skip the parking headaches and ride comfortably with round-trip luxury service.</p>
-            <a href="#services" class="service-link">View Service &rarr;</a>
+        <div class="services-nav-controls">
+            <button class="srv-nav-btn" id="srv-prev-btn" aria-label="Previous Services">&#10094;</button>
+            <button class="srv-nav-btn" id="srv-next-btn" aria-label="Next Services">&#10095;</button>
         </div>
     </div>
-    <div class="srv-pagination">
-        <div class="srv-dots" id="srv-dots-container"></div>
+    
+    <div class="services-carousel" id="services">
+        <div class="services-track" id="servicesTrack">
+            <!-- Card 01 -->
+            <div class="service-card" id="srv-0">
+                <div class="service-card-top">
+                    <div class="service-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path><path d="M16 2v4M8 2v4M4 10h16"></path></svg>
+                    </div>
+                    <div class="service-num">01</div>
+                    <h3 class="service-title">Airport Limo & Car Service</h3>
+                    <p class="service-desc">SeaTac airport transfers with real-time flight tracking and baggage claim meet-and-greet. Flat-rate pricing for Seattle, Bellevue, Kirkland, Tacoma, and all Eastside cities.</p>
+                </div>
+                <a href="#booking" class="service-link">View Service &rarr;</a>
+            </div>
+
+            <!-- Card 02 -->
+            <div class="service-card" id="srv-1">
+                <div class="service-card-top">
+                    <div class="service-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                    </div>
+                    <div class="service-num">02</div>
+                    <h3 class="service-title">Corporate Travel</h3>
+                    <p class="service-desc">Reliable corporate chauffeured transportation tailored for executives. Consolidated monthly billing, pristine black sedans, and point-to-point travel across the Pacific Northwest region.</p>
+                </div>
+                <a href="#booking" class="service-link">View Service &rarr;</a>
+            </div>
+
+            <!-- Card 03 -->
+            <div class="service-card" id="srv-2">
+                <div class="service-card-top">
+                    <div class="service-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <div class="service-num">03</div>
+                    <h3 class="service-title">Hourly As-Directed</h3>
+                    <p class="service-desc">Enjoy complete flexibility with our dedicated hourly charter service. Your private driver stays on standby as long as needed for meetings, shopping, or dynamic schedules.</p>
+                </div>
+                <a href="#booking" class="service-link">View Service &rarr;</a>
+            </div>
+
+            <!-- Card 04 -->
+            <div class="service-card" id="srv-3">
+                <div class="service-card-top">
+                    <div class="service-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </div>
+                    <div class="service-num">04</div>
+                    <h3 class="service-title">Wedding & Special Events</h3>
+                    <p class="service-desc">Make your special day flawless with elegant multi-passenger Mercedes Sprinter vans and luxury black executive sedans. Full VIP group coordination.</p>
+                </div>
+                <a href="#booking" class="service-link">View Service &rarr;</a>
+            </div>
+
+            <!-- Card 05 -->
+            <div class="service-card" id="srv-4">
+                <div class="service-card-top">
+                    <div class="service-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 20h20M4 16l2-8h12l2 8M12 4v4M9 8h6"></path></svg>
+                    </div>
+                    <div class="service-num">05</div>
+                    <h3 class="service-title">Cruise Terminal Transfers</h3>
+                    <p class="service-desc">$30 per person shared cruise shuttle from Sea-Tac hotels and airport to Pier 66 & Pier 91, or private personal trips. Ample luggage room and smooth port transfers.</p>
+                </div>
+                <a href="pier-66/" class="service-link">View Service &rarr;</a>
+            </div>
+
+            <!-- Card 06 -->
+            <div class="service-card" id="srv-5">
+                <div class="service-card-top">
+                    <div class="service-icon-box">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                    </div>
+                    <div class="service-num">06</div>
+                    <h3 class="service-title">Concerts & Night Out</h3>
+                    <p class="service-desc">Arrive in style at Climate Pledge Arena, Lumen Field, or T-Mobile Park. Skip parking headaches and ride comfortably with round-trip luxury service.</p>
+                </div>
+                <a href="#booking" class="service-link">View Service &rarr;</a>
+            </div>
+        </div>
+        <div class="srv-pagination">
+            <div class="srv-dots" id="srv-dots-container"></div>
+        </div>
     </div>
 </div>
-<script defer >
 
-    const srvCards = document.querySelectorAll('.service-card');
-    const srvTotal = srvCards.length;
-    let srvCurrent = 0;
-    let srvInterval;
-    const srvDotsContainer = document.getElementById('srv-dots-container');
-    for (let i = 0; i < srvTotal; i++) {
-        const dotElement = document.createElement('div');
-        dotElement.className = i === 0 ? 'srv-dot active' : 'srv-dot';
-        dotElement.addEventListener('click', () => {
-            clearInterval(srvInterval);
-            changeServiceTo(i);
-            initSrvAuto();
+<script>
+(function() {
+    function initServicesCarousel() {
+        var track = document.getElementById('servicesTrack');
+        var cards = document.querySelectorAll('.service-card');
+        var prevBtn = document.getElementById('srv-prev-btn');
+        var nextBtn = document.getElementById('srv-next-btn');
+        var dotsContainer = document.getElementById('srv-dots-container');
+        
+        if (!track || !cards.length) return;
+        
+        var currentIndex = 0;
+        var autoTimer = null;
+        
+        function getCardsPerView() {
+            var w = window.innerWidth;
+            if (w <= 640) return 1;
+            if (w <= 991) return 2;
+            return 3; // 3 in one line on desktop
+        }
+        
+        function getMaxIndex() {
+            var perView = getCardsPerView();
+            return Math.max(0, cards.length - perView);
+        }
+        
+        function updateCarousel() {
+            var perView = getCardsPerView();
+            var maxIdx = getMaxIndex();
+            if (currentIndex > maxIdx) currentIndex = maxIdx;
+            
+            // Calculate shift percentage
+            // card width is (100% - (perView - 1)*gap) / perView
+            var cardWidth = cards[0].getBoundingClientRect().width;
+            var gap = 24;
+            var shiftPx = currentIndex * (cardWidth + gap);
+            track.style.transform = 'translateX(-' + shiftPx + 'px)';
+            
+            renderDots();
+        }
+        
+        function renderDots() {
+            if (!dotsContainer) return;
+            dotsContainer.innerHTML = '';
+            var maxIdx = getMaxIndex();
+            var totalDots = maxIdx + 1;
+            
+            for (var i = 0; i < totalDots; i++) {
+                (function(idx) {
+                    var dot = document.createElement('div');
+                    dot.className = idx === currentIndex ? 'srv-dot active' : 'srv-dot';
+                    dot.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+                    dot.addEventListener('click', function() {
+                        currentIndex = idx;
+                        updateCarousel();
+                        restartAuto();
+                    });
+                    dotsContainer.appendChild(dot);
+                })(i);
+            }
+        }
+        
+        function nextSlide() {
+            var maxIdx = getMaxIndex();
+            currentIndex = currentIndex >= maxIdx ? 0 : currentIndex + 1;
+            updateCarousel();
+        }
+        
+        function prevSlide() {
+            var maxIdx = getMaxIndex();
+            currentIndex = currentIndex <= 0 ? maxIdx : currentIndex - 1;
+            updateCarousel();
+        }
+        
+        if (nextBtn) nextBtn.addEventListener('click', function() {
+            nextSlide();
+            restartAuto();
         });
-        srvDotsContainer.appendChild(dotElement);
+        
+        if (prevBtn) prevBtn.addEventListener('click', function() {
+            prevSlide();
+            restartAuto();
+        });
+        
+        function startAuto() {
+            stopAuto();
+            autoTimer = setInterval(nextSlide, 4500);
+        }
+        
+        function stopAuto() {
+            if (autoTimer) clearInterval(autoTimer);
+        }
+        
+        function restartAuto() {
+            stopAuto();
+            startAuto();
+        }
+        
+        track.addEventListener('mouseenter', stopAuto);
+        track.addEventListener('mouseleave', startAuto);
+        
+        // Touch swipe support
+        var touchStartX = 0;
+        var touchEndX = 0;
+        track.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAuto();
+        }, { passive: true });
+        
+        track.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 45) {
+                nextSlide();
+            } else if (touchEndX - touchStartX > 45) {
+                prevSlide();
+            }
+            startAuto();
+        }, { passive: true });
+        
+        window.addEventListener('resize', function() {
+            updateCarousel();
+        });
+        
+        updateCarousel();
+        startAuto();
     }
-    function changeServiceTo(nextIdx) {
-        const currentCard = document.getElementById('srv-' + srvCurrent);
-        const nextCard = document.getElementById('srv-' + nextIdx);
-        currentCard.style.transition = 'opacity 0.3s ease';
-        currentCard.style.opacity = '0';
-        setTimeout(() => {
-            currentCard.style.display = 'none';
-            
-            nextCard.style.display = 'block';
-            nextCard.style.opacity = '0';
-            
-            setTimeout(() => {
-                nextCard.style.transition = 'opacity 0.3s ease';
-                nextCard.style.opacity = '1';
-            }, 20);
-            srvCurrent = nextIdx;
-            const allSrvDots = document.querySelectorAll('.srv-dot');
-            allSrvDots.forEach((d, index) => {
-                d.classList.toggle('active', index === srvCurrent);
-            });
-        }, 300);
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initServicesCarousel);
+    } else {
+        initServicesCarousel();
     }
-    function initSrvAuto() {
-        srvInterval = setInterval(() => {
-            let nextIndex = (srvCurrent + 1) % srvTotal;
-            changeServiceTo(nextIndex);
-        }, 5000);
-    }
-    initSrvAuto();
-
+})();
 </script>				</div>
 				<div class="elementor-element elementor-element-f7532a1 elementor-widget__width-initial elementor-widget elementor-widget-html" data-id="f7532a1" data-element_type="widget" data-e-type="widget" data-widget_type="html.default">
 					<style id="68a53b9955649dc820c27e4888ea2bc5">@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Montserrat';font-style:normal;font-weight:400;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Montserrat';font-style:normal;font-weight:500;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Montserrat';font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WRhyzbi.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Montserrat';font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459W1hyzbi.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Montserrat';font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459WZhyzbi.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Montserrat';font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wdhyzbi.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Montserrat';font-style:normal;font-weight:800;font-display:swap;src:url(https://fonts.gstatic.com/s/montserrat/v31/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}</style>
